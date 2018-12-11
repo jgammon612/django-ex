@@ -1,6 +1,9 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from api.resources import CreditResource
+
+credit_resource = CreditResource()
 
 from welcome.views import index, health
 
@@ -11,6 +14,7 @@ urlpatterns = [
 
     url(r'^$', index),
     url(r'^health$', health),
+    url(r'^api/', include(credit_resource.urls))
     url(r'^admin/', include(admin.site.urls)),
 ]
 
